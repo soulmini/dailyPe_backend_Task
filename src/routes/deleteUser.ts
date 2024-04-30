@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 import express from 'express';
 const router = express.Router();
 
-router.post('/', async (req: Request, res: Response) => {
+router.delete('/', async (req: Request, res: Response) => {
     const { user_id, mob_num } = req.body;
     try {
       let user;

@@ -1,9 +1,10 @@
 import { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
-
+import express from 'express';
 const prisma = new PrismaClient();
+const router = express.Router();
 
-const getUsers = async (req: Request, res: Response) => {
+router.post('/', async (req: Request, res: Response) => {
   const { mob_num, user_id, manager_id } = req.body;
 
   try {
@@ -33,13 +34,12 @@ const getUsers = async (req: Request, res: Response) => {
     else {
       users = await prisma.user.findMany();
     }
-
     // Return users
     res.json({ users });
   } catch (error) {
     console.error('Error retrieving users:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
-};
+});
 
-export default getUsers;
+export default router;
