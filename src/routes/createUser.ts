@@ -1,10 +1,11 @@
 import { PrismaClient } from '@prisma/client';
+import { Request, Response } from 'express';
 import { validate } from 'uuid';
 import express from 'express';
 const router = express.Router();
 const prisma = new PrismaClient();
 
-router.post('/', async (req, res) => {
+router.post('/', async (req: Request, res: Response) => {
     const { full_name, mob_num, pan_num, manager_id } = req.body;
 
     if (!full_name) {
