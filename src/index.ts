@@ -3,6 +3,8 @@ const app = express();
 import createUser from './routes/createUser';
 import deleteUser from './routes/deleteUser';
 import getUser from './routes/getUser';
+import updateUser from './routes/updateUser';
+import createManagers from './routes/manegerData';
 
 // middleware for converting raw text into Json
 app.use(express.json());
@@ -17,6 +19,8 @@ app.get('/', (req, res)=> {
 app.use('/getUser', getUser);
 app.use('/deleteUser', deleteUser);
 app.use('/createUser', createUser);
+app.use('/updateUser', updateUser);
+app.use('/createManagers', createManagers);
 
 // starting server on port 3000
 app.listen(PORT, ()=> {
